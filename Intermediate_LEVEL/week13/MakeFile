@@ -1,0 +1,43 @@
+## Define Variables
+CC = arm-none-eabi-gcc
+
+CFLAGS = -c -mcpu=$(ACH) -std=gnu11 -mthumb
+
+ACH = cortex-m4
+
+##===============================================================================
+
+## (1) Compilation
+main.o: main.c
+	@$(CC) $(CFLAGS) $^ -o $@
+
+
+all: main
+
+
+## Extract the exe file
+execute: main.c
+	@$(CC) $(CFLAGS) main.c -o main.exe
+	
+## (2) Cleaning
+clean: 
+	rm *.o *.i *.exe
+
+## (3) Analyzing
+analyze:
+	cppcheck --enable=all main.c
+
+## (4) Debuging
+debug: main.c
+	@$(CC) $(CFLAGS) -g $^ -o $@
+
+## (5) Testing
+test:
+	@make main.o
+	@make execute
+	@make debug
+	@make analyze
+
+
+## to prevent the conflict between targets
+.PHONY: all clean analyze debug
