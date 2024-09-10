@@ -1,0 +1,214 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+PinCfg              0x4               lcd.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+SRAM             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x08000000      0xae0
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x1c4 startup.o
+                0x08000000                Vectors
+ *(.rodata)
+ .rodata        0x080001c4       0x50 main.o
+ *(.text)
+ .text          0x08000214      0x400 lcd.o
+                0x0800024c                LCD_GPIO_init
+                0x080003a4                lcd_is_busy
+                0x0800047c                lcd_kick
+                0x080004a8                lcd_send_command
+                0x080004ec                lcd_init
+                0x08000520                lcd_send_char
+                0x08000564                lcd_send_string
+                0x080005bc                lcd_set_position
+                0x08000606                lcd_clear
+ .text          0x08000614       0xc8 main.o
+                0x08000614                clock_init
+                0x0800063c                wait_ms
+                0x08000674                main
+ .text          0x080006dc       0x70 startup.o
+                0x080006dc                RTC_Alarm_IRQHandler
+                0x080006dc                EXTI2_IRQHandler
+                0x080006dc                TIM8_CC_IRQHandler
+                0x080006dc                DebugMon_Handler
+                0x080006dc                FMPI2C1_EV_IRQHandler
+                0x080006dc                SPI4_IRQHandler
+                0x080006dc                TIM1_CC_IRQHandler
+                0x080006dc                DMA2_Stream5_IRQHandler
+                0x080006dc                HardFault_Handler
+                0x080006dc                DMA1_Stream5_IRQHandler
+                0x080006dc                SysTick_Handler
+                0x080006dc                PVD_IRQHandler
+                0x080006dc                SDIO_IRQHandler
+                0x080006dc                TAMP_STAMP_IRQHandler
+                0x080006dc                PendSV_Handler
+                0x080006dc                NMI_Handler
+                0x080006dc                CAN2_RX1_IRQHandler
+                0x080006dc                EXTI3_IRQHandler
+                0x080006dc                TIM8_TRG_COM_TIM14_IRQHandler
+                0x080006dc                TIM1_UP_TIM10_IRQHandler
+                0x080006dc                TIM8_UP_TIM13_IRQHandler
+                0x080006dc                I2C3_ER_IRQHandler
+                0x080006dc                EXTI0_IRQHandler
+                0x080006dc                I2C2_EV_IRQHandler
+                0x080006dc                DMA1_Stream2_IRQHandler
+                0x080006dc                CAN1_RX0_IRQHandler
+                0x080006dc                FPU_IRQHandler
+                0x080006dc                OTG_HS_WKUP_IRQHandler
+                0x080006dc                UsageFault_Handler
+                0x080006dc                CAN2_SCE_IRQHandler
+                0x080006dc                DMA2_Stream2_IRQHandler
+                0x080006dc                SPI1_IRQHandler
+                0x080006dc                TIM6_DAC_IRQHandler
+                0x080006dc                TIM1_BRK_TIM9_IRQHandler
+                0x080006dc                DCMI_IRQHandler
+                0x080006dc                CAN2_RX0_IRQHandler
+                0x080006dc                DMA2_Stream3_IRQHandler
+                0x080006dc                SAI2_IRQHandler
+                0x080006dc                USART6_IRQHandler
+                0x080006dc                TIM1_TRG_COM_TIM11_IRQHandl
+                0x080006dc                USART3_IRQHandler
+                0x080006dc                SAI1_IRQHandler
+                0x080006dc                CAN1_RX1_IRQHandler
+                0x080006dc                UART5_IRQHandler
+                0x080006dc                DMA2_Stream0_IRQHandler
+                0x080006dc                TIM4_IRQHandler
+                0x080006dc                QUADSPI_IRQHandler
+                0x080006dc                I2C1_EV_IRQHandler
+                0x080006dc                DMA1_Stream6_IRQHandler
+                0x080006dc                DMA1_Stream1_IRQHandler
+                0x080006dc                UART4_IRQHandler
+                0x080006dc                TIM3_IRQHandler
+                0x080006dc                RCC_IRQHandler
+                0x080006dc                TIM8_BRK_TIM12_IRQHandler
+                0x080006dc                Default_Handler
+                0x080006dc                CEC_IRQHandler
+                0x080006dc                EXTI15_10_IRQHandler
+                0x080006dc                ADC_IRQHandler
+                0x080006dc                DMA1_Stream7_IRQHandler
+                0x080006dc                TIM7_IRQHandler
+                0x080006dc                CAN2_TX_IRQHandler
+                0x080006dc                TIM5_IRQHandler
+                0x080006dc                DMA2_Stream7_IRQHandler
+                0x080006dc                I2C3_EV_IRQHandler
+                0x080006dc                EXTI9_5_IRQHandler
+                0x080006dc                RTC_WKUP_IRQHandler
+                0x080006dc                SPDIF_RX_IRQHandler
+                0x080006dc                SPI2_IRQHandler
+                0x080006dc                OTG_HS_EP1_IN_IRQHandler
+                0x080006dc                MemManage_Handler
+                0x080006dc                DMA1_Stream0_IRQHandler
+                0x080006dc                CAN1_TX_IRQHandler
+                0x080006dc                SVC_Handler
+                0x080006dc                FMPI2C1_ER_IRQHandler
+                0x080006dc                EXTI4_IRQHandler
+                0x080006dc                OTG_HS_EP1_OUT_IRQHandler
+                0x080006dc                WWDG_IRQHandler
+                0x080006dc                TIM2_IRQHandler
+                0x080006dc                OTG_FS_WKUP_IRQHandler
+                0x080006dc                TIM1_TRG_COM_TIM11_IRQHandler
+                0x080006dc                OTG_HS_IRQHandler
+                0x080006dc                EXTI1_IRQHandler
+                0x080006dc                USART2_IRQHandler
+                0x080006dc                I2C2_ER_IRQHandler
+                0x080006dc                DMA2_Stream1_IRQHandler
+                0x080006dc                CAN1_SCE_IRQHandler
+                0x080006dc                FLASH_IRQHandler
+                0x080006dc                DMA2_Stream4_IRQHandler
+                0x080006dc                BusFault_Handler
+                0x080006dc                USART1_IRQHandler
+                0x080006dc                OTG_FS_IRQHandler
+                0x080006dc                SPI3_IRQHandler
+                0x080006dc                DMA1_Stream4_IRQHandler
+                0x080006dc                I2C1_ER_IRQHandler
+                0x080006dc                FMC_IRQHandler
+                0x080006dc                DMA2_Stream6_IRQHandler
+                0x080006dc                DMA1_Stream3_IRQHandler
+                0x080006e2                Reset_Handler
+ .text          0x0800074c      0x394 stm32_F103C6_GPIO.o
+                0x0800074c                Get_Bit_Location
+                0x08000812                MCAL_GPIO_Init
+                0x0800090a                MCAL_GPIO_DeInit
+                0x080009dc                MCAL_GPIO_ReadPin
+                0x08000a0a                MCAL_GPIO_ReadPort
+                0x08000a24                MCAL_GPIO_WritePort
+                0x08000a40                MCAL_GPIO_WritePin
+                0x08000a6e                MCAL_GPIO_TogglePin
+                0x08000a90                MCAL_GPIO_LockPin
+                0x08000ae0                _etext = .
+                0x08000ae0                . = ALIGN (0x4)
+
+.glue_7         0x08000ae0        0x0
+ .glue_7        0x08000ae0        0x0 linker stubs
+
+.glue_7t        0x08000ae0        0x0
+ .glue_7t       0x08000ae0        0x0 linker stubs
+
+.vfp11_veneer   0x08000ae0        0x0
+ .vfp11_veneer  0x08000ae0        0x0 linker stubs
+
+.v4_bx          0x08000ae0        0x0
+ .v4_bx         0x08000ae0        0x0 linker stubs
+
+.iplt           0x08000ae0        0x0
+ .iplt          0x08000ae0        0x0 lcd.o
+
+.rel.dyn        0x08000ae0        0x0
+ .rel.iplt      0x08000ae0        0x0 lcd.o
+
+.data           0x20000000        0x0 load address 0x08000ae0
+                0x20000000                _sdata = .
+ *(.data)
+ .data          0x20000000        0x0 lcd.o
+ .data          0x20000000        0x0 main.o
+ .data          0x20000000        0x0 startup.o
+ .data          0x20000000        0x0 stm32_F103C6_GPIO.o
+                0x20000000                _edata = .
+                0x20000000                . = ALIGN (0x4)
+
+.igot.plt       0x20000000        0x0 load address 0x08000ae0
+ .igot.plt      0x20000000        0x0 lcd.o
+
+.bss            0x20000000        0x4 load address 0x08000ae0
+                0x20000000                _sbss = .
+ *(.bss)
+ .bss           0x20000000        0x0 lcd.o
+ .bss           0x20000000        0x0 main.o
+ .bss           0x20000000        0x0 startup.o
+ .bss           0x20000000        0x0 stm32_F103C6_GPIO.o
+                0x20000000                _ebss = .
+                0x20000000                . = ALIGN (0x4)
+ COMMON         0x20000000        0x4 lcd.o
+                0x20000000                PinCfg
+LOAD lcd.o
+LOAD main.o
+LOAD startup.o
+LOAD stm32_F103C6_GPIO.o
+OUTPUT(ghazal.elf elf32-littlearm)
+
+.comment        0x00000000       0x7e
+ .comment       0x00000000       0x7e lcd.o
+                                 0x7f (size before relaxing)
+ .comment       0x0000007e       0x7f main.o
+ .comment       0x0000007e       0x7f startup.o
+ .comment       0x0000007e       0x7f stm32_F103C6_GPIO.o
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 lcd.o
+ .ARM.attributes
+                0x00000033       0x33 main.o
+ .ARM.attributes
+                0x00000066       0x33 startup.o
+ .ARM.attributes
+                0x00000099       0x33 stm32_F103C6_GPIO.o
